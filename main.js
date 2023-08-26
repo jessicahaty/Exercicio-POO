@@ -24,7 +24,47 @@ class Bolo {
         console.log(`O Bolo de ${this.sabor} de tamanho ${this._tamanho} esta sendo decorado !`)
     }
 
+
 }
+
+class BoloMorango extends Bolo {
+    constructor(cobertura) {
+        super("Morango", "Grande")
+        this.cobertura = cobertura
+    }
+
+    decorar() {
+        console.log(`O Bolo de ${this.sabor} de tamanho ${this._tamanho} com cobertura de ${this.cobertura} esta sendo decorado !`)
+    }
+}
+
+class BoloAbstrado {
+    constructor() {
+        if (this.constructor === BoloAbstrado) {
+            throw new Error ("Não é possivel instanciar uma classe abstrata")
+        }
+    }
+
+    prepararMassa() {
+        throw new Error ("Método abstrato - deve ser implementado nas subclasses")
+    }
+}
+
+class BoloLaranja extends BoloAbstrado {
+    constructor() {
+        super()
+    }
+
+    prepararMassa() {
+        console.log("Preparando a massa para o bolo de laranja")
+    }
+}
+
+const boloLaranja = new BoloLaranja
+console.log(boloLaranja)
+boloLaranja.prepararMassa()
+
+
 
 class Ingrediente {
     constructor(nome, quantidade) {
@@ -70,3 +110,6 @@ boloLimao.decorar()
 
 chocolate.estoque()
 farinha.estoque()
+
+const boloMorango = new BoloMorango("Creme")
+boloMorango.decorar()
