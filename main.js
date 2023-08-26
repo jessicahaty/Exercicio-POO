@@ -1,3 +1,31 @@
+class Bolo {
+    constructor(sabor, tamanho) {
+        this._sabor = sabor
+        this._tamanho = tamanho
+    }
+
+    get sabor() {
+        return this._sabor
+    }
+
+    set sabor(novoSabor) {
+        this._sabor = novoSabor
+    }
+
+    get tamanho() {
+        return this._tamanho
+    }
+
+    set tamanho(novoTamanho) {
+        this._tamanho = novoTamanho
+    }
+
+    decorar() {
+        console.log(`O Bolo de ${this.sabor} de tamanho ${this._tamanho} esta sendo decorado !`)
+    }
+
+}
+
 class Ingrediente {
     constructor(nome, quantidade) {
         this._nome = nome
@@ -26,13 +54,19 @@ class Ingrediente {
 
 }
 
+const boloLimao = new Bolo("Limao", "Pequeno")
+const boloChocolate = new Bolo("Chocolate", "Grande")
+
 const chocolate = new Ingrediente("Chocolate", 3)
 const farinha = new Ingrediente("Farinha", 10)
+
+boloChocolate.tamanho = "Medio"
 
 chocolate.nome = "Chocolate branco"
 chocolate.quantidade = 1
 
-console.log(chocolate)
+boloChocolate.decorar()
+boloLimao.decorar()
 
 chocolate.estoque()
 farinha.estoque()
